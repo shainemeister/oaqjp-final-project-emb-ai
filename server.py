@@ -13,12 +13,12 @@ def emotion_analyzer():
 
     # Blank Input Handling
     if not text_to_analyse or text_to_analyse.strip() == "":
-        return "Invalid input! Try again."
+        return "Invalid input! Please try again."
 
     response = emotion_detector(text_to_analyse)
 
     if response['dominant_emotion'] is None:
-        return "Invalid input! Try again."
+        return "Invalid input! Please try again."
 
     output = f"""For the given statement, the emotion detection response is
         'anger': {response['anger']},
