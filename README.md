@@ -44,13 +44,26 @@ oaqjp-final-project-emb-ai/
 ```
 
 ## Quick Start
-1. Clone the repo: `git clone https://github.com/shainemeister/oaqjp-final-project-emb-ai.git`
-2. Install dependencies: `pip install -r requirements.txt` (or as per lab)
-3. Run the app: `python server.py`
+1. Clone the repo: 
+```bash
+git clone https://github.com/shainemeister/oaqjp-final-project-emb-ai.git
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Run the app:
+```bash
+python server.py
+```
+
 4. Open `http://127.0.0.1:5000` and test emotion detection.
 
 ## Screenshots / Demo
-<!-- Add 2-3 screenshots: input form, successful JSON response, error case -->
+![Project Screenshot](submission_files/7c_error_handling_interface.png) 
+*Screenshot for error handling*
 
 ## What I Learned / Skills Demonstrated
 - Full application development lifecycle (requirements → design → code/test → deploy)
@@ -59,14 +72,6 @@ oaqjp-final-project-emb-ai/
 - Integrating external AI APIs (Watson NLP)
 - Error handling, logging, and production considerations
 - Prompt engineering & AI application patterns (ties into earlier IBM courses)
-
-This project directly supports my transition to **Junior Data Analyst / AI Engineer** roles by showing practical Python + AI deployment skills.
-
-## Portfolio Context
-Part of my 2026 IBM Generative AI Engineering Professional Certificate journey. See related repos for:
-- Python data manipulation notebooks
-- Power BI dashboards (upcoming)
-- Prompt engineering libraries
 
 ---
 
