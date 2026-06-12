@@ -32,7 +32,7 @@ def emotion_analyzer():
     return output
 
 @app.route("/")
-def render_index_page():
+def render_index_page(): 
     """Render main application page."""
     return render_template('index.html')
 
