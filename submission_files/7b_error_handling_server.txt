@@ -1,11 +1,40 @@
-theia@theiadocker-smmessage:/home/project/final_project/oaqjp-final-project-emb-ai$ python3 server.py 
- * Serving Flask app 'Emotion Detector'
- * Debug mode: off
-WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5000
- * Running on http://172.17.59.151:5000
-Press CTRL+C to quit
-127.0.0.1 - - [12/Jun/2026 00:55:03] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [12/Jun/2026 00:55:03] "GET /static/mywebscript.js HTTP/1.1" 304 -
-127.0.0.1 - - [12/Jun/2026 00:55:05] "GET /emotionDetector?textToAnalyze= HTTP/1.1" 200 -
+"""
+Emotion Detection Flask Web Appllication
+"""
+from flask import Flask, render_template, request
+from EmotionDetection.emotion_detection import emotion_detector
+
+app = Flask("Emotion Detector")
+
+@app.route("/emotionDetector")
+def emotion_analyzer():
+    """Analyze emotion from query parameter and return formatted response."""
+    text_to_analyse = request.args.get('textToAnalyze')
+
+    # Blank Input Handling
+    if not text_to_analyse or text_to_analyse.strip() == "":
+        return "Invalid input! Please try again."
+
+    response = emotion_detector(text_to_analyse)
+
+    if response['dominant_emotion'] is None:
+        return "Invalid input! Please try again."
+
+    output = f"""For the given statement, the emotion detection response is
+        'anger': {response['anger']},
+        'disgust': {response['disgust']},
+        'fear': {response['fear']},
+        'joy': {response['joy']},
+        'sadness': {response['sadness']}.
+        The dominant emotion is {response['dominant_emotion']}.
+    """
+
+    return output
+
+@app.route("/")
+def render_index_page(): 
+    """Render main application page."""
+    return render_template('index.html')
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
