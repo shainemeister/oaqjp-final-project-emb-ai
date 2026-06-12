@@ -1,0 +1,18 @@
+# Core dependencies for IBM Generative AI Course 5 Final Project
+# Emotion Detection Web App with Flask + Watson NLP
+
+Flask==3.0.3
+ibm-watson==8.2.0          # For Watson NLP (embeddable / cloud)
+requests==2.32.3           # HTTP client (used internally by Watson + API calls)
+
+# Optional but recommended for production/local dev
+gunicorn==23.0.0           # WSGI server (better than Flask dev server for deployment)
+python-dotenv==1.0.1       # For environment variables / API keys
+
+# Testing
+pytest==8.3.3              # Modern alternative / supplement to unittest
+pytest-flask==1.3.0
+
+# Development / linting (optional, for contributors)
+black==24.8.0
+flake8==7.1.1
