@@ -1,3 +1,8 @@
+"""
+Emotion detection module using IBM Watson NLP EmotionPredict service.
+Provides the emotion_detector function for the Flask web application.
+"""
+
 import json
 import requests
 
@@ -13,7 +18,17 @@ def emotion_detector(text_to_analyse):
         "raw_document": {"text": text_to_analyse}
     }
 
-    response = requests.post(url, json=myobj, headers=header)
+    response = requests.post(url, json=myobj, headers=header, timeout=10)
+
+    if response.status_code == 400 or response.status_code != 200:
+        return {
+            'anger': None,
+            'disgust': None,
+            'fear': None,
+            'joy': None,
+            'sadness': None,
+            'dominant_emotion': None
+        }
 
     formatted_response = json.loads(response.text)
     emotions = formatted_response['emotionPredictions'][0]['emotion']
