@@ -11,7 +11,15 @@ def emotion_analyzer():
     """Analyze emotion from query parameter and return formatted response."""
     text_to_analyse = request.args.get('textToAnalyze')
 
+    # Blank Input Handling
+    if not text_to_analyse or text_to_analyse.strip() == "":
+        return "Invalid input! Try again."
+
     response = emotion_detector(text_to_analyse)
+
+    if response['dominant_emotion'] is None:
+        return "Invalid input! Try again."
+
     output = f"""For the given statement, the emotion detection response is
         'anger': {response['anger']},
         'disgust': {response['disgust']},
